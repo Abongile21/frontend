@@ -64,7 +64,9 @@ describe('FortyGuardService', () => {
     );
     testRequest.flush({
       locations: [{
-        name: 'Austin, Texas, United States',
+        name: 'Austin',
+        secondary: 'Texas, United States',
+        displayName: 'Austin, Texas, United States',
         latitude: 30.2672,
         longitude: -97.7431
       }]

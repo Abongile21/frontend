@@ -35,6 +35,8 @@ export interface ApiHealth {
 
 export interface LocationResult {
   name: string;
+  secondary: string;
+  displayName: string;
   latitude: number;
   longitude: number;
 }

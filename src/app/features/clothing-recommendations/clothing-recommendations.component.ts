@@ -50,7 +50,7 @@ import { FortyGuardService } from '../../core/services/fortyguard.service';
                 @for (result of locationResults; track result.latitude + ':' + result.longitude) {
                   <button type="button" role="option" (click)="selectLocation(result)">
                     <strong>{{ result.name }}</strong>
-                    <span>{{ result.latitude.toFixed(4) }}, {{ result.longitude.toFixed(4) }}</span>
+                    <span>{{ result.secondary }}</span>
                   </button>
                 }
               </div>
@@ -196,7 +196,7 @@ export class ClothingRecommendationsComponent implements OnInit {
 
   selectLocation(result: LocationResult): void {
     this.form.patchValue({
-      location: result.name,
+      location: result.displayName,
       latitude: result.latitude,
       longitude: result.longitude
     });
