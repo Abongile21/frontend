@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-The development API URL is `http://localhost:3000/api`. For deployment, set `apiBaseUrl` in `src/environments/environment.production.ts` to the backend's public URL (ending in `/api`) and set the backend's `FRONTEND_ORIGIN` to the frontend's exact origin. The browser only communicates with this backend; FortyGuard credentials stay server-side.
+The development API URL is `http://localhost:3000/api`. The production API URL is `https://fortyguard-explorer-backend.vercel.app/api`, configured in `src/environments/environment.production.ts`. Set the backend's `FRONTEND_ORIGIN` to the separately deployed frontend's exact origin. The browser only communicates with this backend; FortyGuard credentials stay server-side.
 
 ## Test and build
 

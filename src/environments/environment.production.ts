@@ -1,3 +1,3 @@
 export const environment = {
-  apiBaseUrl: 'https://your-backend.example/api'
+  apiBaseUrl: 'https://fortyguard-explorer-backend.vercel.app/api'
 };
