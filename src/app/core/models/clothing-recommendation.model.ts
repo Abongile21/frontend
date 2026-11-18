@@ -32,3 +32,9 @@ export interface ApiHealth {
   status: 'ok';
   fortyGuard: 'configured' | 'disabled';
 }
+
+export interface LocationResult {
+  name: string;
+  latitude: number;
+  longitude: number;
+}

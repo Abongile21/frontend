@@ -53,4 +53,21 @@ describe('FortyGuardService', () => {
       dataSource: 'FortyGuard'
     });
   });
+
+  it('searches destinations through the backend', () => {
+    service.searchLocations('Austin, Texas').subscribe((body) => {
+      expect(body.locations.length).toBe(1);
+    });
+    const testRequest = http.expectOne((request) =>
+      request.url === 'http://localhost:3000/api/location/search' &&
+      request.params.get('q') === 'Austin, Texas'
+    );
+    testRequest.flush({
+      locations: [{
+        name: 'Austin, Texas, United States',
+        latitude: 30.2672,
+        longitude: -97.7431
+      }]
+    });
+  });
 });

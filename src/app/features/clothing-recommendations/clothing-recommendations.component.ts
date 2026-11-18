@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiHealth, ClothingRecommendation } from '../../core/models/clothing-recommendation.model';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+import { ApiHealth, ClothingRecommendation, LocationResult } from '../../core/models/clothing-recommendation.model';
 import { FortyGuardService } from '../../core/services/fortyguard.service';
 
 @Component({
@@ -41,8 +42,19 @@ import { FortyGuardService } from '../../core/services/fortyguard.service';
             <div><h2>Choose a place and time</h2><p>Enter coordinates or use your device location.</p></div>
           </div>
           <form [formGroup]="form" (ngSubmit)="submit()">
-            <label for="location">Location name</label>
-            <input id="location" type="text" formControlName="location" placeholder="e.g. Cape Town, South Africa" autocomplete="off">
+            <label for="location">Destination or city</label>
+            <input id="location" type="text" formControlName="location" placeholder="e.g. Austin, Texas" autocomplete="off">
+            @if (searchingLocations) { <p class="field-hint">Searching destinations…</p> }
+            @if (locationResults.length) {
+              <div class="location-results" role="listbox" aria-label="Destination results">
+                @for (result of locationResults; track result.latitude + ':' + result.longitude) {
+                  <button type="button" role="option" (click)="selectLocation(result)">
+                    <strong>{{ result.name }}</strong>
+                    <span>{{ result.latitude.toFixed(4) }}, {{ result.longitude.toFixed(4) }}</span>
+                  </button>
+                }
+              </div>
+            }
             <div class="coordinate-row">
               <div>
                 <label for="latitude">Latitude</label>
@@ -151,12 +163,44 @@ export class ClothingRecommendationsComponent implements OnInit {
   locating = false;
   errorMessage = '';
   locationError = '';
+  locationResults: LocationResult[] = [];
+  searchingLocations = false;
 
   ngOnInit(): void {
     this.fortyGuard.getHealth().subscribe({
       next: (health) => { this.health = health; this.loadingHealth = false; },
       error: () => { this.loadingHealth = false; }
     });
+    this.form.controls.location.valueChanges.pipe(
+      debounceTime(350),
+      distinctUntilChanged(),
+      filter((query) => query.trim().length >= 2)
+    ).subscribe((query) => this.searchLocations(query));
+  }
+
+  searchLocations(query: string): void {
+    this.searchingLocations = true;
+    this.locationResults = [];
+    this.locationError = '';
+    this.fortyGuard.searchLocations(query).subscribe({
+      next: ({ locations }) => {
+        this.locationResults = locations;
+        this.searchingLocations = false;
+      },
+      error: () => {
+        this.locationError = 'Destination search is unavailable. Enter coordinates manually.';
+        this.searchingLocations = false;
+      }
+    });
+  }
+
+  selectLocation(result: LocationResult): void {
+    this.form.patchValue({
+      location: result.name,
+      latitude: result.latitude,
+      longitude: result.longitude
+    });
+    this.locationResults = [];
   }
 
   useCurrentLocation(): void {

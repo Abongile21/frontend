@@ -5,7 +5,8 @@ import { timeout } from 'rxjs/operators';
 import {
   ApiHealth,
   ClothingRecommendation,
-  ClothingRequest
+  ClothingRequest,
+  LocationResult
 } from '../models/clothing-recommendation.model';
 import { environment } from '../../../environments/environment';
 
@@ -20,5 +21,12 @@ export class FortyGuardService {
 
   getClothingRecommendation(request: ClothingRequest): Observable<ClothingRecommendation> {
     return this.http.post<ClothingRecommendation>(`${this.baseUrl}/clothing/recommendations`, request);
+  }
+
+  searchLocations(query: string): Observable<{ locations: LocationResult[] }> {
+    return this.http.get<{ locations: LocationResult[] }>(
+      `${this.baseUrl}/location/search`,
+      { params: { q: query } }
+    ).pipe(timeout({ first: 10000 }));
   }
 }
