@@ -1,0 +1,65 @@
+.page { max-width: 1130px; margin: 0 auto; padding: 28px 42px 45px; }
+.back-link { display: inline-flex; gap: 7px; margin-bottom: 20px; color: #6f8377; font-size: 11px; text-decoration: none; }
+.back-link:hover { color: #356a49; }
+.page-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 23px; }
+.eyebrow { margin: 0 0 8px; color: #688471; font-size: 9px; font-weight: 750; letter-spacing: 1.2px; }
+h1 { margin: 0; color: #1f3328; font-size: clamp(29px, 3.5vw, 39px); font-weight: 650; letter-spacing: -1.5px; }
+.subtitle { margin: 8px 0 0; color: #76847b; font-size: 12px; }
+.clothes-illustration { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 18px; background: #eaf2e8; font-size: 29px; }
+.source-banner { display: flex; align-items: center; gap: 12px; margin-bottom: 17px; padding: 13px 15px; border: 1px solid #e1e9e1; border-radius: 10px; background: #f0f5ef; }
+.source-mark { display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #dcebdd; color: #467854; font-size: 13px; font-weight: 700; }
+.source-banner strong { color: #344a3c; font-size: 11px; }
+.source-banner p { margin: 3px 0 0; color: #78857c; font-size: 10px; }
+.content-grid { display: grid; grid-template-columns: minmax(0, .93fr) minmax(0, 1.07fr); align-items: start; gap: 16px; }
+.form-card, .result-card { padding: 21px; border: 1px solid #e5e9e5; border-radius: 12px; background: #fff; }
+.card-title { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; }
+.step { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; background: #eff5ef; color: #4a7957; font-size: 10px; font-weight: 700; }
+.card-title h2, .result-heading h2 { margin: 0; color: #26392e; font-size: 14px; font-weight: 650; }
+.card-title p { margin: 4px 0 0; color: #839087; font-size: 10px; }
+form label { display: block; margin: 13px 0 6px; color: #596a60; font-size: 10px; font-weight: 650; }
+input { width: 100%; min-width: 0; height: 38px; padding: 0 10px; border: 1px solid #e1e7e1; border-radius: 7px; outline: none; background: #fff; color: #304237; font-size: 11px; }
+input:focus { border-color: #7aa085; box-shadow: 0 0 0 3px #79a0841a; }
+input::placeholder { color: #abb5ad; }
+.coordinate-row, .time-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.time-row { grid-template-columns: 1.05fr .8fr .8fr; }
+.optional { color: #99a39b; font-weight: 400; }
+.location-button { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px; padding: 0; border: 0; background: transparent; color: #467451; font-size: 10px; font-weight: 650; }
+.location-button:disabled { opacity: .6; }
+.field-error { margin: 7px 0 0; color: #ae4c45; font-size: 10px; }
+.field-hint { margin: 7px 0 0; color: #7d8981; font-size: 9px; line-height: 1.5; }
+.submit-button { display: flex; width: 100%; align-items: center; justify-content: center; gap: 7px; min-height: 41px; margin-top: 18px; padding: 9px 13px; border: 0; border-radius: 8px; background: #2f6744; color: #fff; font-size: 11px; font-weight: 650; transition: background .18s; }
+.submit-button:hover:not(:disabled) { background: #245738; }
+.submit-button:disabled { cursor: not-allowed; opacity: .48; }
+.disabled-note { margin: 9px 0 0; color: #9a6b42; font-size: 9px; text-align: center; }
+.result-card { min-height: 455px; }
+.empty-state { display: flex; min-height: 410px; flex-direction: column; align-items: center; justify-content: center; padding: 25px 20px; text-align: center; }
+.sun-icon { display: grid; width: 54px; height: 54px; place-items: center; border-radius: 17px; background: #f5f4e9; color: #a89d55; font-size: 28px; }
+.empty-state h2, .error-state h2 { margin: 17px 0 6px; color: #324439; font-size: 14px; font-weight: 650; }
+.empty-state p, .error-state p { max-width: 320px; margin: 0; color: #828e85; font-size: 10px; line-height: 1.6; }
+.weather-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 17px; }
+.weather-chips span { padding: 6px 9px; border: 1px solid #edf0ea; border-radius: 20px; color: #718076; font-size: 9px; }
+.error-state { display: flex; min-height: 410px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.error-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: #fbecea; color: #a94c46; font-weight: 700; }
+.result-heading { display: flex; align-items: center; justify-content: space-between; }
+.data-source { padding: 5px 7px; border-radius: 5px; background: #eef4ed; color: #598064; font-size: 8px; font-weight: 750; letter-spacing: .7px; }
+.temperature-row { display: flex; align-items: center; gap: 13px; margin: 20px 0; padding: 14px; border-radius: 9px; background: #f4f7f3; }
+.temperature { color: #294d38; font-size: 38px; font-weight: 550; letter-spacing: -2px; }
+.temperature-row strong { color: #465b4d; font-size: 10px; }
+.temperature-row p { margin: 5px 0 0; color: #849087; font-size: 10px; }
+.recommendation-section, .why-section { margin-top: 18px; }
+.recommendation-section h3, .why-section h3 { margin: 0 0 8px; color: #53665a; font-size: 10px; font-weight: 700; }
+.recommendation-item { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0; color: #334b3b; font-size: 11px; line-height: 1.45; }
+.recommendation-item::before { content: "✓"; color: #59926a; font-weight: 700; }
+.detail-item { margin: 6px 0; color: #77847a; font-size: 10px; line-height: 1.5; }
+.why-section { padding-top: 13px; border-top: 1px solid #edf0ed; }
+.page-footnote { margin: 13px 0 0; color: #9aa39c; font-size: 9px; text-align: center; }
+@media (max-width: 850px) { .page { padding: 25px 22px 40px; } .content-grid { grid-template-columns: 1fr; } .result-card { min-height: 360px; } .empty-state, .error-state { min-height: 320px; } }
+@media (max-width: 520px) {
+  .page { padding: 20px 15px 34px; }
+  .page-heading { align-items: flex-start; }
+  .clothes-illustration { width: 46px; height: 46px; border-radius: 14px; font-size: 23px; }
+  .form-card, .result-card { padding: 16px; }
+  .time-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .time-row > div:first-child { grid-column: 1 / -1; }
+  .temperature { font-size: 33px; }
+}

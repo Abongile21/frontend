@@ -1,0 +1,29 @@
+:host { display: block; min-height: 100vh; }
+.shell { min-height: 100vh; }
+.sidebar { position: fixed; inset: 0 auto 0 0; z-index: 3; display: flex; flex-direction: column; width: 248px; padding: 28px 18px; background: #10251f; color: #e7f2eb; }
+.brand { display: flex; align-items: center; gap: 11px; margin: 0 0 48px; color: inherit; font-size: 15px; letter-spacing: -.3px; text-decoration: none; }
+.brand b { font-weight: 500; color: #8db9a4; }
+.brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 12px; background: #b7d9c4; color: #10251f; font-weight: 800; }
+.nav-label { margin: 0 12px 10px; color: #85a094; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; }
+nav { display: grid; gap: 6px; }
+nav a { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 9px; color: #b7c9c0; font-size: 13px; text-decoration: none; transition: background .18s, color .18s; }
+nav a span { width: 18px; font-size: 17px; text-align: center; }
+nav a:hover, nav a.active { background: #1d3b31; color: #fff; }
+.sidebar-note { margin-top: auto; padding: 15px 12px; border-top: 1px solid #29463c; color: #c8d8d0; font-size: 12px; }
+.sidebar-note small { display: block; margin: 7px 0 0 17px; color: #829e91; font-size: 11px; }
+.status-dot { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #82c8a2; }
+.main { min-height: 100vh; margin-left: 248px; }
+.topbar { display: flex; height: 68px; align-items: center; justify-content: space-between; padding: 0 42px; border-bottom: 1px solid #e8ece8; background: rgba(255,255,255,.7); }
+.breadcrumb { color: #6d7d74; font-size: 12px; }
+.breadcrumb span { padding: 0 7px; color: #abb6af; }
+.topbar-badge { color: #597265; font-size: 11px; }
+@media (max-width: 760px) {
+  .sidebar { position: sticky; inset: 0 0 auto; width: auto; height: auto; padding: 11px 14px; }
+  .brand { margin: 0 0 10px; font-size: 14px; }
+  .nav-label, .sidebar-note { display: none; }
+  nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+  nav a { justify-content: center; padding: 8px 5px; font-size: 11px; }
+  .main { margin-left: 0; }
+  .topbar { height: 48px; padding: 0 18px; }
+  .topbar-badge { font-size: 10px; }
+}
