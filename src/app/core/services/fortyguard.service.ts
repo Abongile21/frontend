@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { timeout } from 'rxjs/operators';
 import {
   ApiHealth,
   ClothingRecommendation,
@@ -14,7 +15,7 @@ export class FortyGuardService {
   private readonly baseUrl = environment.apiBaseUrl;
 
   getHealth(): Observable<ApiHealth> {
-    return this.http.get<ApiHealth>(`${this.baseUrl}/health`);
+    return this.http.get<ApiHealth>(`${this.baseUrl}/health`).pipe(timeout({ first: 10000 }));
   }
 
   getClothingRecommendation(request: ClothingRequest): Observable<ClothingRecommendation> {
